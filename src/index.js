@@ -10,6 +10,9 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 //HTTP logger
 app.use(morgan('combined'));
 
+//set up static file is public folder
+app.use(express.static(path.join(__dirname,'public')));
+
 //Template engine
 app.engine('hbs', handlebars(
     {
