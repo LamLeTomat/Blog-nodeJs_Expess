@@ -12,6 +12,11 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 
 //set up static file is public folder
 app.use(express.static(path.join(__dirname,'public')));
+//Use midde ware for Post method
+app.use(express.urlencoded({
+    extended: true
+}));
+app.use(express.json());
 
 //Template engine
 app.engine('hbs', handlebars(
@@ -33,4 +38,9 @@ app.get('/news', (req, res) => {
 
 app.get('/search', (req, res) => {
     res.render('search');
-})
+});
+
+app.post('/search', (req, res) => {
+    res.render('search');
+    console.log(req.body);
+});
